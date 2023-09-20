@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/Io';
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import './Sidebar.css';
 
 export default function Sidebar({ filterData, setFilterData }) {
