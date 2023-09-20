@@ -72,7 +72,7 @@ export default function Map({ filterData }) {
 			maxBounds={bounds}
 			maxBoundsViscosity={1.0}
 			minZoom={2}
-			maxZoom={5}
+			maxZoom={7}
 		>
 			{/* OPEN STREEN MAPS TILES */}
 			<TileLayer
