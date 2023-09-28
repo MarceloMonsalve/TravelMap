@@ -7,10 +7,6 @@
 	width: 100%;
 }
 
-.navbar-left {
-	flex: 1;
-}
-
 .navbar-middle ul {
 	display: flex;
 	justify-content: space-between;

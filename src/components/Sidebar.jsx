@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
-import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
+import { IoIosArrowDown, IoIosArrowUp, IoMdMenu } from 'react-icons/io';
 import './Sidebar.css';
 
 export default function Sidebar({ filterData, setFilterData }) {
@@ -10,6 +10,8 @@ export default function Sidebar({ filterData, setFilterData }) {
 		activity: false,
 		tripLevel: false,
 	});
+
+	const [isopen, setIsopen] = useState(true);
 
 	const handleDropdownToggle = (category) => {
 		setDropdownStates((prevStates) => ({
@@ -40,7 +42,7 @@ export default function Sidebar({ filterData, setFilterData }) {
 
 	const Dropdown = ({ label, category, items }) => {
 		return (
-			<>
+			<div className="dropdown">
 				<hr
 					style={{
 						backgroundColor: '#A27E57',
@@ -79,58 +81,80 @@ export default function Sidebar({ filterData, setFilterData }) {
 						</div>
 					)}
 				</div>
-			</>
+			</div>
 		);
 	};
 
 	return (
 		<div className="sidenav">
-			<h2>Filters</h2>
-			<Dropdown
-				label={'Trip Type'}
-				category={'tripType'}
-				items={['Small Group Adventure', 'Private Journey', 'Cruise Collection']}
-			/>
-			<Dropdown
-				label={'Destinations'}
-				category={'destinations'}
-				items={[
-					'Africa',
-					'Asia',
-					'Europe',
-					'Latin America',
-					'Middle East',
-					'North America',
-					'Pacific',
-					'Polar Regions',
-				]}
-			/>
-			<Dropdown
-				label={'Activity'}
-				category={'activity'}
-				items={[
-					'Cultural',
-					'Family Trips',
-					'Hiking / Trekking',
-					'Limited Edition',
-					'Rail Journeys',
-					'River Cruising',
-					'Safaris',
-					'Sea Kayaking & Snorkeling',
-					'Small Ship Cruising',
-					'Walking',
-					'Wildlife & Natural History',
-				]}
-			/>
-			<Dropdown
-				label={'Trip Level'}
-				category={'tripLevel'}
-				items={[
-					'Easier (Level 1-2)',
-					'Moderate (Level 3-4)',
-					'Challenging (Level 5-6)',
-				]}
-			/>
+			<div
+				style={{
+					width: '100%',
+					display: 'flex',
+					justifyContent: 'flex-end',
+					padding: '0 0 15px',
+				}}
+			>
+				<button
+					onClick={() => setIsopen(!isopen)}
+					style={{ border: 'none', backgroundColor: 'inherit' }}
+				>
+					<IoMdMenu fontSize={'2rem'} />
+				</button>
+			</div>
+			{isopen && (
+				<>
+					<Dropdown
+						label={'Trip Type'}
+						category={'tripType'}
+						items={[
+							'Small Group Adventure',
+							'Private Journey',
+							'Cruise Collection',
+						]}
+					/>
+					<Dropdown
+						label={'Destinations'}
+						category={'destinations'}
+						items={[
+							'Africa',
+							'Asia',
+							'Europe',
+							'Latin America',
+							'Middle East',
+							'North America',
+							'Pacific',
+							'Polar Regions',
+						]}
+					/>
+					<Dropdown
+						label={'Activity'}
+						category={'activity'}
+						items={[
+							'Cultural',
+							'Family Trips',
+							'Hiking / Trekking',
+							'Limited Edition',
+							'Rail Journeys',
+							'River Cruising',
+							'Safaris',
+							'Sea Kayaking & Snorkeling',
+							'Small Ship Cruising',
+							'Walking',
+							'Wildlife & Natural History',
+						]}
+					/>
+					<Dropdown
+						label={'Trip Level'}
+						category={'tripLevel'}
+						items={[
+							'Easier (Level 1-2)',
+							'Moderate (Level 3-4)',
+							'Challenging (Level 5-6)',
+						]}
+					/>
+				</>
+			)}
 		</div>
 	);
 }
